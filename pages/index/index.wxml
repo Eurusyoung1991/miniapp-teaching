@@ -1,0 +1,5 @@
+<!--index.wxml-->
+
+<view class="begininfo">
+  <button bindtap='beginAnswer'> begin </button>
+</view>
