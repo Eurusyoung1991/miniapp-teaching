@@ -67,7 +67,7 @@ Page({
         // answer_right:this.data.answer_right[this.data.index]=0
       })
     }else{
-      this.setData({error:this.setData.error+1})
+      this.setData({error:this.data.error+1})
     }
     if (this.data.index == 10) {
       wx.redirectTo({
@@ -101,7 +101,7 @@ Page({
         // answer_right:this.data.answer_right[this.data.index]=0
       })
     }else{
-      this.setData({error:this.setData.error+1})
+      this.setData({error:this.data.error+1})
     }
 
     if (this.data.index == 10) {
@@ -134,7 +134,7 @@ Page({
         // answer_right:this.data.answer_right[this.data.index]=0
       })
     }else{
-      this.setData({error:this.setData.error+1})
+      this.setData({error:this.data.error+1})
     }
     if (this.data.index == 10) {
       wx.redirectTo({
@@ -166,7 +166,7 @@ Page({
         // answer_right:this.data.answer_right[this.data.index]=0
       })
     }else{
-      this.setData({error:this.setData.error+1})
+      this.setData({error:this.data.error+1})
     }
     if (this.data.index == 10) {
       wx.redirectTo({
