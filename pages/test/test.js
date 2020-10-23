@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    index: 0,
+    index: 1,
     realIndex: 0,
     A: 0,
     B: 0,
@@ -27,28 +27,31 @@ Page({
     answerB: app.globalData_mathtest.question[0].option.B,
     answerC: app.globalData_mathtest.question[0].option.C,
     answerD: app.globalData_mathtest.question[0].option.D,
-    correctAnswer:0,
+    correct:0,
+    error:0,
     list: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-    listABCD : ['A','B','C','D']
+    listABCD : ['A','B','C','D'],
+    answer: ['','B','A','B','A','B','B','B','C','B','B'],
+    // answer_right:[1,1,1,1,1,1,1,1,1,1,1]
   },
 
-  randSort: function () {
-    return Math.random() > 0.5 ? 1 : -1;
-  },
+  // randSort: function () {
+  //   return Math.random() > 0.5 ? 1 : -1;
+  // },
 
-  setList: function () {
-    var newList = this.data.list.sort(this.randSort);
-    this.setData({
-      list: newList,
-    });
-  },
+  // setList: function () {
+  //   var newList = this.data.list.sort(this.randSort);
+  //   this.setData({
+  //     list: newList,
+  //   });
+  // },
 
-  setABCD : function(){
-    var abcd = this.data.listABCD.sort(this.randSort);
-    this.setData({
-      listABCD: abcd,
-    });
-  },
+  // setABCD : function(){
+  //   var abcd = this.data.listABCD.sort(this.randSort);
+  //   this.setData({
+  //     listABCD: abcd,
+  //   });
+  // },
 
   setOption: function(){
 
@@ -57,31 +60,26 @@ Page({
 
 
   answerClickA: function () {
-    if (this.data.listABCD[0] == 'A') {
+    // this.setData({A:this.data.A+1})
+    if(this.data.answer[this.data.index]=='A'){
       this.setData({
-        A: this.data.A + 1
+        correct:this.data.correct+1,
+        // answer_right:this.data.answer_right[this.data.index]=0
+      })
+    }else{
+      this.setData({error:this.setData.error+1})
+    }
+    if (this.data.index == 10) {
+      wx.redirectTo({
+        url: '/pages/result/result?correct=' + this.data.correct + '&error=' + this.data.error ,
       })
     }
-    else if (this.data.listABCD[0] == 'B') {
-      this.setData({
-        B: this.data.B + 1
-      })
-    }
-    if (this.data.listABCD[0] == 'C') {
-      this.setData({
-        C: this.data.C + 1
-      })
-    }
-    if (this.data.listABCD[0] == 'D') {
-      this.setData({
-        C: this.data.D + 1
-      })
-    }
-    this.setData({
-      index: this.data.index + 1,
-      realIndex: this.data.list[this.data.index],
-    })
    
+    if(this.data.index<10){
+    this.setData({
+          index: this.data.index + 1,
+          realIndex: this.data.list[this.data.index],
+        })
     this.setData({
       questionDetail: app.globalData_mathtest.question[this.data.realIndex].question,
      
@@ -90,136 +88,114 @@ Page({
       answerC: app.globalData_mathtest.question[this.data.realIndex].option[this.data.listABCD[2]],
       answerD: app.globalData_mathtest.question[this.data.realIndex].option[this.data.listABCD[3]]
     })
-    if (this.data.index == 10) {
-      wx.redirectTo({
-        url: '/pages/result/result?A=' + this.data.A + '&B=' + this.data.B + '&C=' + this.data.C + '&D=' + this.data.D,
-      })
     }
+   
+
   },
 
   answerClickB: function () {
-    if(this.data.listABCD[1] == 'A'){
+    // this.setData({B:this.data.B+1})
+    if(this.data.answer[this.data.index]=='B'){
       this.setData({
-        A:this.data.A + 1
+        correct:this.data.correct+1,
+        // answer_right:this.data.answer_right[this.data.index]=0
+      })
+    }else{
+      this.setData({error:this.setData.error+1})
+    }
+
+    if (this.data.index == 10) {
+      wx.redirectTo({
+        url: '/pages/result/result?correct=' + this.data.correct + '&error=' + this.data.error ,
       })
     }
-    else if (this.data.listABCD[1] == 'B') {
+    if(this.data.index<10){
       this.setData({
-        B: this.data.B + 1
-      })
-    }
-    if (this.data.listABCD[1] == 'C') {
-      this.setData({
-        C: this.data.C + 1
-      })
-    }
-    if (this.data.listABCD[1] == 'D') {
-      this.setData({
-        D: this.data.D + 1
-      })
-    }
-    this.setData({
       index: this.data.index + 1,
       realIndex: this.data.list[this.data.index]
     })
-    this.setData({
-      questionDetail: app.globalData_mathtest.question[this.data.realIndex].question,
-      answerA: app.globalData_mathtest.question[this.data.realIndex].option[this.data.listABC[0]],
-      answerB: app.globalData_mathtest.question[this.data.realIndex].option[this.data.listABC[1]],
-      answerC: app.globalData_mathtest.question[this.data.realIndex].option[this.data.listABC[2]],
-      answerD: app.globalData_mathtest.question[this.data.realIndex].option[this.data.listABC[3]],
-    })
-    if (this.data.index == 10) {
-      wx.redirectTo({
-        url: '/pages/result/result?A=' + this.data.A + '&B=' + this.data.B + '&C=' + this.data.C + '&D=' + this.data.D,
+      this.setData({
+        questionDetail: app.globalData_mathtest.question[this.data.realIndex].question,
+        answerA: app.globalData_mathtest.question[this.data.realIndex].option[this.data.listABCD[0]],
+        answerB: app.globalData_mathtest.question[this.data.realIndex].option[this.data.listABCD[1]],
+        answerC: app.globalData_mathtest.question[this.data.realIndex].option[this.data.listABCD[2]],
+        answerD: app.globalData_mathtest.question[this.data.realIndex].option[this.data.listABCD[3]],
       })
+  
     }
+    
   },
 
   answerClickC: function () {
-    if (this.data.listABCD[2] == 'A') {
+    // this.setData({C:this.data.C+1})
+    if(this.data.answer[this.data.index]=='C'){
       this.setData({
-        A: this.data.A + 1
+        correct:this.data.correct+1,
+        // answer_right:this.data.answer_right[this.data.index]=0
+      })
+    }else{
+      this.setData({error:this.setData.error+1})
+    }
+    if (this.data.index == 10) {
+      wx.redirectTo({
+        url: '/pages/result/result?correct=' + this.data.correct + '&error=' + this.data.error ,
       })
     }
-    else if (this.data.listABCD[2] == 'B') {
+    if(this.data.index<10){
       this.setData({
-        B: this.data.B + 1
-      })
-    }
-    if (this.data.listABCD[2] == 'C') {
-      this.setData({
-        C: this.data.C + 1
-      })
-    }
-    if (this.data.listABCD[2] == 'D') {
-      this.setData({
-        D: this.data.D + 1
-      })
-    }
-    this.setData({
       index: this.data.index + 1,
       realIndex: this.data.list[this.data.index],
       
     })
-    this.setData({
+      this.setData({
       questionDetail: app.globalData_mathtest.question[this.data.realIndex].question,
       answerA: app.globalData_mathtest.question[this.data.realIndex].option[this.data.listABCD[0]],
       answerB: app.globalData_mathtest.question[this.data.realIndex].option[this.data.listABCD[1]],
       answerC: app.globalData_mathtest.question[this.data.realIndex].option[this.data.listABCD[2]],
       answerD: app.globalData_mathtest.question[this.data.realIndex].option[this.data.listABCD[3]]
     })
-    if (this.data.index == 10) {
-      wx.redirectTo({
-        url: '/pages/result/result?A=' + this.data.A + '&B=' + this.data.B + '&C=' + this.data.C + '&D=' + this.data.D,
-      })
     }
+    
+ 
   },
   answerClickD: function () {
-    if (this.data.listABCD[3] == 'A') {
+    // this.setData({D:this.data.D+1})
+    if(this.data.answer[this.data.index]=='D'){
       this.setData({
-        A: this.data.A + 1
+        correct:this.data.correct+1,
+        // answer_right:this.data.answer_right[this.data.index]=0
+      })
+    }else{
+      this.setData({error:this.setData.error+1})
+    }
+    if (this.data.index == 10) {
+      wx.redirectTo({
+        url: '/pages/result/result?correct=' + this.data.correct + '&error=' + this.data.error ,
       })
     }
-    else if (this.data.listABCD[3] == 'B') {
-      this.setData({
-        B: this.data.B + 1
-      })
-    }
-    if (this.data.listABCD[3] == 'C') {
-      this.setData({
-        C: this.data.C + 1
-      })
-    }
-    if (this.data.listABCD[3] == 'D') {
-      this.setData({
-        D: this.data.D + 1
-      })
-    }
-    this.setData({
+    if(this.data.index<10){
+       this.setData({
       index: this.data.index + 1,
       realIndex: this.data.list[this.data.index],
       
     })
-    this.setData({
+      this.setData({
       questionDetail: app.globalData_mathtest.question[this.data.realIndex].question,
       answerA: app.globalData_mathtest.question[this.data.realIndex].option[this.data.listABCD[0]],
       answerB: app.globalData_mathtest.question[this.data.realIndex].option[this.data.listABCD[1]],
       answerC: app.globalData_mathtest.question[this.data.realIndex].option[this.data.listABCD[2]],
       answerD: app.globalData_mathtest.question[this.data.realIndex].option[this.data.listABCD[3]]
     })
-    if (this.data.index == 10) {
-      wx.redirectTo({
-        url: '/pages/result/result?A=' + this.data.A + '&B=' + this.data.B + '&C=' + this.data.C + '&D=' + this.data.D,
-      })
     }
+    
+   
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setList();
-    this.setABCD();
+    // this.setList();
+    // this.setABCD();
     
   },
 

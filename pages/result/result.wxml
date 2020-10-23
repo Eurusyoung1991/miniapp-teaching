@@ -1,4 +1,4 @@
 <!--pages/result/result.wxml-->
 <view>
-  <view><text>恭喜你，你的水平是：{{Kind}}</text></view>
+  <view><text>恭喜你，答对了{{correct}}道题</text></view>
 </view>
