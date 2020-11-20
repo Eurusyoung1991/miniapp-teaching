@@ -1,20 +1,28 @@
 //app.js
 App({
+  globalData:{
+    userInfo:{}
+  },
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
+    
+    
     // 登录
     wx.login({
       success: res => {
+        console.log("id",res)
+
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
     // 获取用户信息
     wx.getSetting({
       success: res => {
+        
+        // console.log("getsetting",res)
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
@@ -30,11 +38,20 @@ App({
             }
           })
         }
+        else{
+          wx.navigateTo({
+            url: '/pages/index/index',
+            success: (result)=>{
+              
+            },
+            fail: (res)=>{},
+            complete: ()=>{}
+          });
+        }
       }
     })
   },
   globalData_mathtest: {
-    userInfo: "hello",
     question: [{ "question": "和80相邻的两个数是（  ）。", "option": { "A": "81和82", "B": "79和81", "C": "78和79" ,"D": "以上都不对"}, "answer": "B" }
       , { "question": "76到82中间有（　）个数。", "option": { "A": "5", "B": "6", "C": "7","D": "以上都不对" }, "answer": "A" }
       , { "question": "下面的数中，比20大得多是数是（  ）。", "option": { "A": "10", "B": "89", "C": "30" ,"D": "以上都不对"}, "answer": "B" }

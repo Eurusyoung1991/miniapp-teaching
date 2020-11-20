@@ -1,5 +1,62 @@
 <!--index.wxml-->
 
-<view class="begininfo">
-  <button bindtap='beginAnswer'> begin </button>
+<!-- <view >
+  <button bindtap='beginAnswer'> 数学一年级 </button>
+</view>
+<view >
+  <button bindtap='beginAnswer'> 数学二年级 </button>
+</view>
+<view >
+  <button bindtap='beginAnswer'> 数学三年级 </button>
+</view>
+<view >
+  <button bindtap='beginAnswer'> 数学四年级 </button>
+</view>
+<view >
+  <button bindtap='beginAnswer'> 数学五年级 </button>
+</view>
+<view >
+  <button bindtap='beginAnswer'> 数学六年级 </button>
+</view> -->
+
+<view class = "submit">
+    <van-row gutter="18">
+    <van-col span="12"><button bindtap='beginAnswer' > 数学一年级上册 </button></van-col>
+    <van-col span="12"><button bindtap='beginAnswer'> 数学一年级下册 </button></van-col>
+    </van-row>
+</view>
+<view class = "submit">
+    <van-row gutter="18">
+    <van-col span="12"><button bindtap='beginAnswer'> 数学二年级上册 </button></van-col>
+    <van-col span="12"><button bindtap='beginAnswer'> 数学二年级下册 </button></van-col>
+    </van-row>
+</view>
+
+
+<view class = "submit">
+    <van-row gutter="18">
+    <van-col span="12"><button bindtap='beginAnswer' > 数学三年级上册 </button></van-col>
+    <van-col span="12"><button bindtap='beginAnswer'> 数学三年级下册 </button></van-col>
+    </van-row>
+</view>
+
+<view class = "submit">
+    <van-row gutter="18">
+    <van-col span="12"><button bindtap='beginAnswer' > 数学四年级上册 </button></van-col>
+    <van-col span="12"><button bindtap='beginAnswer'> 数学四年级下册 </button></van-col>
+    </van-row>
+</view>
+
+<view class = "submit">
+    <van-row gutter="18">
+    <van-col span="12"><button bindtap='beginAnswer' > 数学五年级上册 </button></van-col>
+    <van-col span="12"><button bindtap='beginAnswer'> 数学五年级下册 </button></van-col>
+    </van-row>
+</view>
+
+<view class = "submit">
+    <van-row gutter="18">
+    <van-col span="12"><button bindtap='beginAnswer' > 数学六年级上册 </button></van-col>
+    <van-col span="12"><button bindtap='beginAnswer'> 数学六年级下册 </button></van-col>
+    </van-row>
 </view>

@@ -9,3 +9,14 @@
   align-items: center;
   justify-content: center;
 }
+.view-text {
+  line-height: 100rpx;
+}
+.submit{
+  margin: 0 auto;
+  padding-top: 15px;
+  }
+.image{
+  margin:auto;
+  padding-left: 10px;
+}
